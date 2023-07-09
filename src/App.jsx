@@ -26,8 +26,6 @@ function App(){
 
 function AppRouter(){
   const location = useLocation()
-  
-
   return <Routes location={location.pathname}>
     <Route path="/" element={<Home />} />
     <Route path="/drums" element={<DrumsApp />} />
