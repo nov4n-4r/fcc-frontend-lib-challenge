@@ -1,6 +1,6 @@
 import DrumsApp from "./projects/drums";
 import Pomodoro from "./projects/pomodoro_clock";
-import { Routes, Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Routes, Route, BrowserRouter as Router, Link, useLocation } from "react-router-dom";
 
 function Home(){
   return <section
@@ -20,12 +20,18 @@ function Home(){
 
 function App(){
   return <Router>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/drums" element={<DrumsApp />} />
-      <Route path="/pomodoro" element={<Pomodoro />} />
-    </Routes>
+    <AppRouter />
   </Router>
+}
+
+function AppRouter(){
+  const location = useLocation()
+
+  return <Routes location={location}>
+    <Route path="/" element={<Home />} />
+    <Route path="/drums" element={<DrumsApp />} />
+    <Route path="/pomodoro" element={<Pomodoro />} />
+  </Routes>
 }
 
 export default App

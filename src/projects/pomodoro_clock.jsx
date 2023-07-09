@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useMemo, useRef, useState } from "react"
 
-function useTimer(workTimeInMinutes, breakTimeInMinutes){
+function useTimer(workTimeInMinutes, breakTimeInMinutes, onTimeOut){
 
     const initialWorkPeriod = 25 * 60
     const initialRestPeriod = 5 * 60
@@ -10,9 +10,6 @@ function useTimer(workTimeInMinutes, breakTimeInMinutes){
     
     const [timer, setTimer] = useState(false)
     const running = useMemo(() => Boolean(timer), [timer])
-
-    // const [workPeriod, setWorkPeriod] = useState(initialWorkPeriod)
-    // const [restPeriod, setRestPeriod] = useState(5 * 60)
 
     function startTimer(){
         if(!Boolean(timer)) return setTimer(
@@ -24,21 +21,20 @@ function useTimer(workTimeInMinutes, breakTimeInMinutes){
                         return 0
                     }
 
-                    if(prev - 1 >= 0){
+                    if(prev - 1 > 0){
                         return prev - 1
                     }else{
+                        onTimeOut()
                         return 0
                     }
                 })
-            }, 1000)
+            }, 100)
         )
     }
 
     function resetTimer(){
         stopTimer()
         setRest(false)
-        // setRestPeriod(initialRestPeriod)
-        // setWorkPeriod(initialWorkPeriod)
         setTime(initialWorkPeriod)
     }
 
@@ -52,14 +48,6 @@ function useTimer(workTimeInMinutes, breakTimeInMinutes){
     useEffect(() => setTime(rest ? breakTimeInMinutes * 60 : workTimeInMinutes * 60), [rest])
     useEffect(() => setTime(prev => rest ? breakTimeInMinutes * 60 : prev), [breakTimeInMinutes])
     useEffect(() => setTime(prev => !rest ? workTimeInMinutes * 60 : prev), [workTimeInMinutes])
-
-    // useEffect(() => setWorkPeriod(prev => {
-    //     return (0 <= workTimeInMinutes <= 60) ? workTimeInMinutes * 60 : prev
-    // }), [workTimeInMinutes])
-
-    // useEffect(() => setRestPeriod(prev => {
-    //     return (0 <= breakTimeInMinutes <= 60) ? breakTimeInMinutes * 60: prev
-    // }), [breakTimeInMinutes])
 
     return {rest, time, startTimer, stopTimer, resetTimer, running}
 
@@ -78,7 +66,6 @@ function Pomodoro(){
     const minSessionPeriod = () => setSessionPeriod(prev => prev - 1 >= 1 ? prev - 1 : prev)
     const minBreakPeriod = () => setBreakPeriod(prev => prev - 1 >= 1 ? prev - 1 : prev)
 
-    const {rest, time, startTimer, stopTimer, resetTimer, running} = useTimer(sessionPeriod, breakPeriod)
     
     const formatTime = secon => {
         const fMinute = Math.floor(secon/60) >= 10 ? Math.floor(secon/60) : `0${Math.floor(secon/60)}`
@@ -93,18 +80,18 @@ function Pomodoro(){
         stopAudio()
     }
 
-    const stopAudio = () => audioRef.current.pause()
+    const stopAudio = () => {
+        audioRef.current.currentTime = 0
+        audioRef.current.pause()
+    }
 
     const playAudio = () => {
         audioRef.current.currentTime = 0
         audioRef.current.play()
-        setTimeout(stopAudio, 3000)
     }
 
-    useEffect(() => {
-        if(time === 0) playAudio()
-        console.log(!audioRef.current.paused)
-    }, [time])
+    const {rest, time, startTimer, stopTimer, resetTimer, running} = useTimer(sessionPeriod, breakPeriod, playAudio)
+
 
 
     return <section
@@ -150,7 +137,7 @@ function Pomodoro(){
                 ref={audioRef}
                 src="/beep-06.mp3"
                 id="beep"
-                loop={true}
+                controls
             />
 
     </section>
