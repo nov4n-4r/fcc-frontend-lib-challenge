@@ -137,7 +137,6 @@ function Pomodoro(){
                 ref={audioRef}
                 src="/beep-06.mp3"
                 id="beep"
-                controls
             />
 
     </section>
