@@ -1,3 +1,4 @@
+import Calculator from "./projects/calculator";
 import DrumsApp from "./projects/drums";
 import Markdown from "./projects/markdown";
 import Pomodoro from "./projects/pomodoro_clock";
@@ -19,6 +20,7 @@ function Home(){
     <Link to="/pomodoro"><button className="p-2 text-white">25 + 5 CLOCK CHALLENGE</button></Link>
     <Link to="/quotes"><button className="p-2 text-white">QUOTES GENERATOR CHALLENGE</button></Link>
     <Link to="/markdown"><button className="p-2 text-white">MARKDOWN CHALLENGE</button></Link>
+    <Link to="/calculator"><button className="p-2 text-white">CALCULATOR CHALLENGE</button></Link>
   </section>
 }
 
@@ -36,6 +38,7 @@ function AppRouter(){
     <Route exact path="/pomodoro" element={<Pomodoro />} />
     <Route exact path="/quotes" element={<QuotesGenerator />} />
     <Route exact path="/markdown" element={<Markdown />} />
+    <Route exact path="/calculator" element={<Calculator />} />
   </Routes>
 }
 
