@@ -1,3 +1,152 @@
+/* Import Prism.js theme CSS */
+/* @import 'prismjs/themes/prism-tomorrow.css'; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Typography */
+.markdown h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.markdown h2 {
+  @apply text-2xl font-semibold mb-3;
+}
+
+.markdown h3 {
+  @apply text-xl font-semibold mb-3;
+}
+
+.markdown h4 {
+  @apply text-lg font-semibold mb-2;
+}
+
+.markdown p {
+  @apply mb-4;
+}
+
+.markdown a {
+  @apply text-blue-500 underline;
+}
+
+.markdown ul {
+  @apply list-disc ml-6 mb-4;
+}
+
+.markdown ol {
+  @apply list-decimal ml-6 mb-4;
+}
+
+.markdown li {
+  @apply mb-1;
+}
+
+.markdown blockquote {
+  @apply border-l-4 pl-4 mb-4 italic text-gray-700;
+}
+
+/* Code blocks */
+.markdown pre {
+  @apply bg-gray-100 p-4 rounded;
+}
+
+.markdown code {
+  @apply text-sm font-mono bg-gray-200 p-1 rounded;
+}
+
+/* Inline code */
+.markdown p code {
+  @apply font-mono bg-gray-200 p-1 rounded;
+}
+
+/* Tables */
+.markdown table {
+  @apply w-full border-collapse;
+}
+
+.markdown th {
+  @apply bg-gray-200 font-semibold p-2 text-left;
+}
+
+.markdown td {
+  @apply p-2 border-t;
+}
+
+/* Images */
+.markdown img {
+  @apply mx-auto my-4;
+}
+
+/* Typography */
+.custom-markdown h1 {
+  @apply text-4xl font-bold mb-6 text-purple-700;
+}
+
+.custom-markdown h2 {
+  @apply text-3xl font-semibold mb-5 text-green-600;
+}
+
+.custom-markdown h3 {
+  @apply text-2xl font-semibold mb-4 text-blue-600;
+}
+
+.custom-markdown h4 {
+  @apply text-xl font-semibold mb-3 text-yellow-600;
+}
+
+.custom-markdown p {
+  @apply mb-4 text-gray-700;
+}
+
+.custom-markdown a {
+  @apply text-blue-500 underline;
+}
+
+.custom-markdown ul {
+  @apply list-disc ml-8 mb-4;
+}
+
+.custom-markdown ol {
+  @apply list-decimal ml-8 mb-4;
+}
+
+.custom-markdown li {
+  @apply mb-1;
+}
+
+.custom-markdown blockquote {
+  @apply border-l-4 pl-4 mb-4 italic text-gray-700 border-gray-400;
+}
+
+/* Code blocks */
+.custom-markdown pre {
+  @apply my-4;
+}
+
+.custom-markdown pre code {
+  @apply text-sm font-mono;
+}
+
+/* Inline code */
+.custom-markdown p code {
+  @apply font-mono bg-gray-200 p-1 rounded;
+}
+
+/* Tables */
+.custom-markdown table {
+  @apply w-full border-collapse;
+}
+
+.custom-markdown th {
+  @apply bg-gray-200 font-semibold p-2 text-left;
+}
+
+.custom-markdown td {
+  @apply p-2 border-t;
+}
+
+/* Images */
+.custom-markdown img {
+  @apply mx-auto my-4;
+}

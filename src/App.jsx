@@ -1,4 +1,5 @@
 import DrumsApp from "./projects/drums";
+import Markdown from "./projects/markdown";
 import Pomodoro from "./projects/pomodoro_clock";
 import QuotesGenerator from "./projects/quotes_generator";
 import { Routes, Route, BrowserRouter as Router, Link, useLocation } from "react-router-dom";
@@ -17,6 +18,7 @@ function Home(){
     <Link to="/drums"><button className="p-2 text-white">DRUMS CHALLENGE</button></Link>
     <Link to="/pomodoro"><button className="p-2 text-white">25 + 5 CLOCK CHALLENGE</button></Link>
     <Link to="/quotes"><button className="p-2 text-white">QUOTES GENERATOR CHALLENGE</button></Link>
+    <Link to="/markdown"><button className="p-2 text-white">MARKDOWN CHALLENGE</button></Link>
   </section>
 }
 
@@ -33,6 +35,7 @@ function AppRouter(){
     <Route exact path="/drums" element={<DrumsApp />} />
     <Route exact path="/pomodoro" element={<Pomodoro />} />
     <Route exact path="/quotes" element={<QuotesGenerator />} />
+    <Route exact path="/markdown" element={<Markdown />} />
   </Routes>
 }
 

@@ -55,7 +55,6 @@ function QuotesGenerator(){
                 <div className="flex items-center gap-2">
                     <a id="tweet-quote" className="text-white" href={`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${activeQuote.quote}" ${activeQuote.author}`}>Tweet</a>
                 </div>
-                {/* https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=%22If%20you%20want%20your%20children%20to%20turn%20out%20well%2C%20spend%20twice%20as%20much%20time%20with%20them%2C%20and%20half%20as%20much%20money.%22%20Abigail%20Van%20Buren */}
                 <p id="author">{"~" + activeQuote.author}</p>
 
             </div>
